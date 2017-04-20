@@ -111,9 +111,7 @@
 				<!-- /.row -->
 				<div class="panel-body">
 					<form method="POST" class="form-horizontal" role="form"
-						action="AddNewRecipe">
-
-
+						action="AddNewRecipe?step=1">
 						<div class="form-group">
 							<label class="col-sm-2 control-label" style="text-align: left">Recipe
 								Name:*</label>
@@ -155,7 +153,7 @@
 							<label class="col-sm-2 control-label" style="text-align: left">DishType:*</label>
 							<div class="col-sm-4">
 								<select class="form-control" name="dishtype" id="dishtype"
-									required placeholder="Select role">
+									required>
 									<option value="" selected disabled>---Select
 										DishType---</option>
 									<c:forEach items="${dishtypes}" var="dishtype">
@@ -165,10 +163,11 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label" style="text-align: left">Cooking Style:*</label>
+							<label class="col-sm-2 control-label" style="text-align: left">Cooking
+								Style:*</label>
 							<div class="col-sm-4">
 								<select class="form-control" name="cookStyle" id="cookStyle"
-									required placeholder="Select role">
+									required>
 									<option value="" selected disabled>---Select
 										cookStyles---</option>
 									<c:forEach items="${cookStyles}" var="cookStyle">
@@ -178,10 +177,11 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label" style="text-align: left">Serve Time:*</label>
+							<label class="col-sm-2 control-label" style="text-align: left">Serve
+								Time:*</label>
 							<div class="col-sm-4">
 								<select multiple class="form-control" name="serveTime"
-									id="serveTime" required placeholder="Select role">
+									id="serveTime" required>
 									<c:forEach items="${serveTimes}" var="serveTime">
 										<option value="${serveTime.serveTime}">${serveTime.serveTime}</option>
 									</c:forEach>
@@ -193,7 +193,7 @@
 								Country:*</label>
 							<div class="col-sm-4">
 								<select class="form-control" name="country" id="country"
-									required placeholder="Select role">
+									required>
 									<option value="" selected disabled>---Select
 										country---</option>
 									<c:forEach items="${countries}" var="country">
@@ -202,12 +202,12 @@
 								</select>
 							</div>
 						</div>
-						<div class="form-group">
+						<%-- <div class="form-group">
 							<label class="col-sm-2 control-label" style="text-align: left">Main
 								ingredients:*</label>
 							<div class="col-sm-4">
 								<select class="form-control" name="mainIngredient"
-									id="mainIngredient" required placeholder="Select role">
+									id="mainIngredient" required>
 									<option value="" selected disabled>---Select
 										ingredient---</option>
 									<c:forEach items="${ingredients}" var="ingredient">
@@ -221,19 +221,18 @@
 								ingredients:*</label>
 							<div class="col-sm-4">
 								<select multiple class="form-control" name="otherIngredient"
-									id="otherIngredient" required placeholder="Select role">
+									id="otherIngredient" required>
 									<c:forEach items="${ingredients}" var="ingredient">
 										<option value="${ingredient.id}">${ingredient.ingredientName}</option>
 									</c:forEach>
 								</select>
 							</div>
-						</div>
+						</div> --%>
 
 						<div class="form-group">
 							<label class="col-sm-2 control-label" style="text-align: left">Cost:*</label>
 							<div class="col-sm-4">
-								<select class="form-control" name="cost" id="cost" required
-									placeholder="Select cost">
+								<select class="form-control" name="cost" id="cost" required>
 									<option value="">---Select cost---</option>
 									<option value="High">High</option>
 									<option value="Medium">Medium</option>
@@ -252,7 +251,7 @@
 							<label class="col-sm-2 control-label" style="text-align: left">Difficulty:*</label>
 							<div class="col-sm-4">
 								<select class="form-control" name="difficulty" id="difficulty"
-									required placeholder="Select cost">
+									required>
 									<option value="">---Select difficulty---</option>
 									<option value="Hard">Hard</option>
 									<option value="Normal">Normal</option>
@@ -260,19 +259,38 @@
 								</select>
 							</div>
 						</div>
-
+						<!-- <div class="form-group">
+							<label class="col-sm-2 control-label" style="text-align: left">Calorie:*</label>
+							<div class="col-sm-4">
+								<input type="text" name="calorie" id="calorie"
+									class="form-control" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" style="text-align: left">Protein:</label>
+							<div class="col-sm-4">
+								<input type="text" name="protein" id="protein"
+									class="form-control" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" style="text-align: left">Fat:</label>
+							<div class="col-sm-4">
+								<input type="text" name="fat" id="fat" class="form-control"
+									required>
+							</div>
+						</div> -->
 						<div class="form-group">
 							<div class="col-sm-10 col-sm-offset-2">
-								<button type="submit" class="btn btn-primary">Add
-									Recipe</button>
 								<button type="reset" class="btn btn-primary">Reset</button>
+								<button type="submit" class="btn btn-primary">Next</button>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<div class="col-sm-10 col-sm-offset-2">
 								<label id="emailError"
-									style="text-align: left; margin-top: 15px; color: red" />
+									style="text-align: left; margin-top: 15px; color: red"></label>
 							</div>
 						</div>
 					</form>
@@ -282,18 +300,19 @@
 			</div>
 			<!-- /#page-wrapper -->
 		</div>
-		<!-- /#wrapper -->
+	</div>
+	<!-- /#wrapper -->
 
-		<!-- jQuery -->
-		<script src="js/jquery.js"></script>
+	<!-- jQuery -->
+	<script src="js/jquery.js"></script>
 
-		<!-- Bootstrap Core JavaScript -->
-		<script src="js/bootstrap.min.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
 
-		<!-- Morris Charts JavaScript -->
-		<script src="js/plugins/morris/raphael.min.js"></script>
-		<script src="js/plugins/morris/morris.min.js"></script>
-		<script src="js/plugins/morris/morris-data.js"></script>
+	<!-- Morris Charts JavaScript -->
+	<script src="js/plugins/morris/raphael.min.js"></script>
+	<script src="js/plugins/morris/morris.min.js"></script>
+	<script src="js/plugins/morris/morris-data.js"></script>
 </body>
 
 </html>

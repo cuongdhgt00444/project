@@ -184,25 +184,5 @@ public class Recipe {
 	public void setApproved(boolean isApproved) {
 		this.isApproved = isApproved;
 	}
-	public Recipe(int id, String recipeName, String description, String direction, int recipeBy, int category,
-			int dishType, int cookingStyle, String serveTime, int originalFrom, String cost, int serving,
-			String difficulty, boolean isApproved) {
-		super();
-		this.id = id;
-		this.recipeName = recipeName;
-		this.description = description;
-		this.direction = direction;
-		this.recipeBy = recipeBy;
-		this.category = category;
-		this.dishType = dishType;
-		this.cookingStyle = cookingStyle;
-		this.serveTime = serveTime;
-		this.originalFrom = originalFrom;
-		this.cost = cost;
-		this.serving = serving;
-		this.difficulty = difficulty;
-		this.isApproved = isApproved;
-	}
-	
 	
 }

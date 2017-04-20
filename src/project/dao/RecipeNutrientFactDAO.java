@@ -10,7 +10,7 @@ import project.entity.RecipeNutrientFact;
 
 public class RecipeNutrientFactDAO {
 
-	public static RecipeNutrientFact insertRecipeIngredient(RecipeNutrientFact recipeNutrientFact) throws SQLException {
+	public RecipeNutrientFact insertRecipeIngredient(RecipeNutrientFact recipeNutrientFact) throws SQLException {
 		String sqlQuery = "insert into RecipeNutrientFact(recipeId, nutrient,unit,quantity) values(?,?,?,?)";
 		System.out.println("sql: " + sqlQuery);
 
