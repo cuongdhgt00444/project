@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang3.StringUtils;
 
 import project.dao.OtherObjectDAO;
+import project.dao.RatingDAO;
 import project.dao.RecipeDAO;
 import project.dao.RecipeIngredientDAO;
 import project.dao.RecipeNutrientFactDAO;
@@ -26,6 +28,7 @@ import project.entity.Country;
 import project.entity.DishType;
 import project.entity.Ingredient;
 import project.entity.Nutrient;
+import project.entity.Rating;
 import project.entity.Recipe;
 import project.entity.RecipeIngredient;
 import project.entity.RecipeNutrientFact;
@@ -120,6 +123,21 @@ public class AddNewRecipe extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			
+			Random random = new Random();
+			int randomNum = random.nextInt(5) + 1;
+			Rating rating = new Rating();
+			rating.setRecipeId(inserted.getId());
+			rating.setAvgRating(randomNum);
+			
+			try {
+				new RatingDAO().insertRating(rating);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			request.getSession().removeAttribute("recipe");
+			request.getSession().removeAttribute("mainIngredient");
 			request.getRequestDispatcher("AddResult.jsp").forward(request, response);
 		}
 
@@ -226,5 +244,4 @@ public class AddNewRecipe extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

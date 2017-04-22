@@ -6,6 +6,7 @@
 package project.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import project.dao.RecipeDAO;
 import project.entity.Account;
+import project.entity.RecipeBean;
 
 /**
  *
@@ -45,12 +48,19 @@ public class Dashboard extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 
 		Account account = (Account) request.getSession().getAttribute("account");
-		try {
 
-			if (account.getRole() == 1) {
-				response.sendRedirect("AdminManager.jsp");
+		try {
+			ArrayList<RecipeBean> highRatedRecipes = new RecipeDAO().getRecipesByRating();
+			System.out.println("recipes:" + highRatedRecipes.size());
+			request.setAttribute("recipes", highRatedRecipes);
+			if (null == account) {
+				request.getRequestDispatcher("homePage.jsp").forward(request, response);
 			} else {
-				request.getRequestDispatcher("RegisteredUserHome.jsp").forward(request, response);
+				if (account.getRole() == 1) {
+					response.sendRedirect("AdminManager.jsp");
+				} else {
+					request.getRequestDispatcher("RegisteredUserHome.jsp").forward(request, response);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -124,7 +124,7 @@
 						<div class="form-group">
 							<label class="col-sm-2 control-label" style="text-align: left">Description:</label>
 							<div class="col-sm-4">
-								<textarea class="form-control" name="desciption" id="desciption"
+								<textarea class="form-control" name="description" id="description"
 									class="form-control" rows="5"></textarea>
 							</div>
 						</div>

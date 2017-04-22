@@ -4,8 +4,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
+
+import project.entity.Account;
+import project.entity.RecipeBean;
 
 public class ProjectUtils {
 
@@ -67,7 +71,7 @@ public class ProjectUtils {
 		LocalDateTime now = LocalDateTime.now();
 		return now;
 	}
-	
+
 	public Date convertStringToDate(String dateStr) {
 		Date date = null;
 		SimpleDateFormat dateFormate = new SimpleDateFormat("yyyy/MM/dd");
@@ -76,7 +80,21 @@ public class ProjectUtils {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
+
 		return date;
+	}
+
+	public static String buildRecommendationMailContent(Account acc, ArrayList<RecipeBean> recomendations) {
+		StringBuilder content = new StringBuilder();
+		content.append("<html>").append("<head></head>").append("<body>")
+				.append("<h3>Your daily recommendation meal</h3>");
+
+		for (RecipeBean recipeBean : recomendations) {
+			content.append("<h4>").append(recipeBean.getRecipeName()).append("</h4>");
+		}
+		content.append("<p>Please check the website for more information and choose the recipe you want</p>");
+		content.append("</body>").append("<html>");
+
+		return content.toString();
 	}
 }

@@ -8,8 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import project.entity.Account;
+import project.entity.RecipeBean;
 
 /**
  * @author CuongDH
@@ -27,7 +29,7 @@ public class AccountDAO {
 	public static Account insertAccount(Account account) throws SQLException {
 		String sqlQuery = "insert into Account(username, password,firstname,middlename,lastname,dob,email,receieDailyEmail,role) values(?,?,?,?,?,?,?,?,?)";
 		System.out.println("sql: " + sqlQuery);
-		
+
 		Connection connection = ConnectionUtils.getConnection();
 		PreparedStatement statement = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
 		statement.setString(1, account.getUsername());
@@ -125,6 +127,26 @@ public class AccountDAO {
 
 		}
 		return false;
+	}
+
+	public ArrayList<Account> getAllUsers() throws SQLException {
+		String sqlQuery = "Select * from Account where role=2";
+		Connection connection = ConnectionUtils.getConnection();
+		PreparedStatement statement = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
+		statement.executeQuery();
+
+		ResultSet rs = statement.getResultSet();
+		Account account = null;
+		ArrayList<Account> accounts = new ArrayList<>();
+		while (rs.next()) {
+			account = new Account();
+			account.setId(rs.getInt("id"));
+			account.setEmail(rs.getString("email"));
+			account.setReceiveDailyEmail(rs.getBoolean("receieDailyEmail"));
+
+			accounts.add(account);
+		}
+		return accounts;
 	}
 
 	public static void main(String[] args) {

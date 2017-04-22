@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>User Home Page</title>
+<title>Recipe Detail</title>
 <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom CSS -->
@@ -22,31 +22,65 @@
 	type="text/css">
 <link href="css/main.css" rel="stylesheet">
 <script src="js/jquery.js" type="text/javascript"></script>
+
 <script type="text/javascript">
-	
+	//Get the modal
+	var modal = document.getElementById('id01');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
 </script>
 </head>
 <body>
 	<div id="wrapper">
 		<!-- Navigation -->
-		<jsp:include page="include/topMenu.jsp"></jsp:include>
+		<jsp:include page="/include/topMenu.jsp"></jsp:include>
 		<div id="page-wrapper">
 			<div class="container-fluid">
 				<!-- Page Heading -->
-				<div class="row">
-					<div class="col-lg-12">
-						<h2 class="page-header">Recommendations</h2>
+				<!-- /.row -->
+				<div class="row" style="border-bottom: 1px dotted #e6e6e6">
+					<div class="col-sm-4">
+						<img class="img-responsive" src="images/img_avatar2.png" width="300px">
+					</div>
+					<div class="col-sm-8">
+						<h1 style="color: #4d4d4d">sdfsdfs${recipe.recipeName}</h1>
+
+						<span>sfdfsdfds${recipe.description}</span> <span>Recipe by</span>
+						${recipe.recipeBy}
 					</div>
 				</div>
-				<!-- /.row -->
 				<div class="row">
-					<jsp:include page="include/recipesGrid.jsp"></jsp:include>
+					<div class="col-sm-4">
+						<h2>Ingredient</h2>
+						<ul>
+							<li>ingredient 1</li>
+							<li>ingredient 2</li>
+							<li>ingredient 3</li>
+							<li>ingredient 4</li>
+						</ul>
+					</div>
+					<div class="col-sm-8">
+						<h2>Direction</h2>
+						<h3>
+							<span>sdfsdfsdfs df sdhf sjkdhf kjsdhf]
+								sdfhksdjhfjkhsdjkfh <br> shdfkjsdhfkjsdhfjsdhfjk <br>sfjksdhkjfhsdkjhfjkshdf
+								<br>
+							</span>
+						</h3>
+					</div>
 				</div>
-				<!-- /.row -->
-				<!-- /.container-fluid -->
 			</div>
-			<!-- /#page-wrapper -->
 		</div>
+		<!-- /.row -->
+		<!-- /.container-fluid -->
+	</div>
+	<!-- /#page-wrapper -->
+	</div>
 	</div>
 	<!-- /#wrapper -->
 
@@ -60,6 +94,7 @@
 	<script src="js/plugins/morris/raphael.min.js"></script>
 	<script src="js/plugins/morris/morris.min.js"></script>
 	<script src="js/plugins/morris/morris-data.js"></script>
+
 </body>
 
 </html>

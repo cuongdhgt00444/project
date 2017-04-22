@@ -22,6 +22,10 @@
 	type="text/css">
 <link href="css/main.css" rel="stylesheet">
 <script src="js/jquery.js" type="text/javascript"></script>
+
+<link href="css/star-rating.css" media="all" rel="stylesheet"
+	type="text/css" />
+<script src="js/star-rating.js" type="text/javascript"></script>
 <script type="text/javascript">
 	
 </script>
@@ -35,12 +39,51 @@
 				<!-- Page Heading -->
 				<div class="row">
 					<div class="col-lg-12">
-						<h2 class="page-header">Recommendations</h2>
+						<h2 class="page-header">Breakfast</h2>
 					</div>
 				</div>
 				<!-- /.row -->
 				<div class="row">
-					<jsp:include page="include/recipesGrid.jsp"></jsp:include>
+					<c:forEach items="${breakfast}" var="breakfastrecipe">
+						<div class="col-sm-4">
+							<div class="recipeGrid">
+								<img class="img-responsive" src="images/no_img.png">
+								<h3 style="color: #4d4d4d">${breakfastrecipe.recipeName}</h3>
+								<input class="rating" value="${breakfastrecipe.rating}" data-size="xs"
+									disabled />
+								<h5 class="recipeDesc">
+									<span>${breakfastrecipe.description}</span>
+								</h5>
+								<h5 class="recipeBy">
+									<span>Recipe by</span> ${breakfastrecipe.recipeBy}
+								</h5>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<h2 class="page-header">Lunch &amp; Dinner</h2>
+					</div>
+				</div>
+				<!-- /.row -->
+				<div class="row">
+					<c:forEach items="${recipes}" var="recipe">
+						<div class="col-sm-4">
+							<div class="recipeGrid">
+								<img class="img-responsive" src="images/no_img.png">
+								<h3 style="color: #4d4d4d">${recipe.recipeName}</h3>
+								<input class="rating" value="${recipe.rating}" data-size="xs"
+									disabled />
+								<h5 class="recipeDesc">
+									<span>${recipe.description}</span>
+								</h5>
+								<h5 class="recipeBy">
+									<span>Recipe by</span> ${recipe.recipeBy}
+								</h5>
+							</div>
+						</div>
+					</c:forEach>
 				</div>
 				<!-- /.row -->
 				<!-- /.container-fluid -->

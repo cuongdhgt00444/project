@@ -27,16 +27,16 @@
 		<!-- Navigation -->
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			<!-- Brand and toggle get grouped for better mobile display -->
-			<jsp:include page="template/banner.jsp"></jsp:include>
+			<jsp:include page="/template/banner.jsp"></jsp:include>
 			<!-- Top Menu Items -->
-			<jsp:include page="template/accountSection.jsp"></jsp:include>
+			<jsp:include page="/template/accountSection.jsp"></jsp:include>
 			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-			<jsp:include page="template/leftMenu.jsp"></jsp:include>
+			<jsp:include page="/template/leftMenu.jsp"></jsp:include>
 			<!-- /.navbar-collapse -->
 		</nav>
-		<jsp:include page="template/mainContent.jsp"></jsp:include>
+		<jsp:include page="/template/mainContent.jsp"></jsp:include>
 		<!-- /#wrapper -->
-		<jsp:include page="template/footer.jsp"></jsp:include>
+		<jsp:include page="/template/footer.jsp"></jsp:include>
 		<!-- jQuery -->
 		<script src="js/jquery.js"></script>
 
